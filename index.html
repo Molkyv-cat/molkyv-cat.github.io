@@ -1,44 +1,335 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-        <title> ● Bio Molkyv </title>
-        <style>
-            body {
-                background-color: #131010;
-                font-family: "IBM Plex Mono", monospace;
-            }
-            .container {
-                max-width: 700px;
-                text-align: center;
-                margin: 80px auto 0 auto;
-            }
-            h1 {
-                font-weight: 700;
-                color: #f2eded;
-                margin-bottom: 4px;
-            }
-            p {
-                font-weight: 400;
-                color: #b8b2b2;
-                margin-top: 0;
-                margin-bottom: 24px;
-            }
-            .btn {
-                color: #CFCECD;
-                border: 1px solid #4B4646;
-                padding: 8px 16px;
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <img src="avatar.png" alt="Molkyv" width="150">
-            <h1>Molkyv Developer</h1> 
-            <p>my bio</p>
-            <a href="https://github.com/Molkyv-cat" target="_blank" class="btn">GitHub</a> </div>
-    </body>
-</html>   
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Molkyv — Bio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --grey-50: #fff;
+    --grey-100: #fafafa;
+    --grey-200: #f2f2f2;
+    --grey-300: #eee;
+    --grey-400: #dbdbdb;
+    --grey-500: #aeaeae;
+    --grey-600: #808080;
+    --grey-700: #5c5c5c;
+    --grey-900: #2e2e2e;
+    --grey-1000: #242424;
+    --grey-1100: #161616;
+    --grey-1200: #080808;
+    --blue-400: #a2bcff;
+    --blue-600: #3b5cf6;
+    --blue-700: #3250df;
+    --blue-900: #263fa9;
+  }
+  :root {
+    color-scheme: light;
+    --bg: var(--grey-50);
+    --layer-01: var(--grey-100);
+    --layer-02: var(--grey-200);
+    --text: var(--grey-1100);
+    --text-muted: var(--grey-700);
+    --text-faint: var(--grey-600);
+    --border: rgba(0,0,0,.1);
+    --border-muted: rgba(0,0,0,.08);
+    --border-strong: rgba(0,0,0,.2);
+    --accent: var(--blue-600);
+    --accent-hover: var(--blue-700);
+    --code-bg: var(--grey-100);
+    --inverse-bg: var(--grey-1100);
+    --inverse-text: var(--grey-50);
+  }
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --bg: var(--grey-1100);
+    --layer-01: var(--grey-1000);
+    --layer-02: var(--grey-900);
+    --text: var(--grey-100);
+    --text-muted: var(--grey-500);
+    --text-faint: var(--grey-600);
+    --border: rgba(255,255,255,.1);
+    --border-muted: rgba(255,255,255,.08);
+    --border-strong: rgba(255,255,255,.2);
+    --accent: var(--blue-400);
+    --accent-hover: var(--blue-500);
+    --code-bg: var(--grey-1200);
+    --inverse-bg: var(--grey-50);
+    --inverse-text: var(--grey-1100);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); text-decoration: underline; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+  /* top bar */
+  .topbar {
+    display: flex; align-items: center; gap: 12px;
+    height: 52px; padding: 0 16px;
+    border-bottom: 1px solid var(--border-muted);
+    background: var(--bg);
+  }
+  .logo {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: var(--inverse-bg); color: var(--inverse-text);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 13px;
+  }
+  .divider { width: 1px; height: 20px; background: var(--border); }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 3px 8px; font-size: 12px; color: var(--text-muted);
+  }
+  .badge b { color: var(--text); font-weight: 500; }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #2eaf5a; }
+  .spacer { flex: 1; }
+  .user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+  .user img { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border); }
+
+  .toggles { display: flex; gap: 6px; margin-right: 8px; }
+  .tgl {
+    border: 1px solid var(--border); background: var(--bg); color: var(--text-muted);
+    font-size: 12px; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+    font-family: inherit;
+  }
+  .tgl:hover { color: var(--text); border-color: var(--border-strong); }
+
+  /* tabs */
+  .tabs {
+    display: flex; gap: 4px; padding: 0 16px;
+    border-bottom: 1px solid var(--border-muted);
+    overflow-x: auto;
+  }
+  .tabs a {
+    padding: 12px 14px; font-size: 14px; font-weight: 500;
+    color: var(--text-muted); border-bottom: 2px solid transparent;
+    text-decoration: none; white-space: nowrap;
+  }
+  .tabs a.active { color: var(--text); border-bottom-color: var(--text); }
+  .tabs a:hover { color: var(--text); text-decoration: none; }
+
+  main { max-width: 880px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 18px; font-weight: 600; margin: 0 0 4px; }
+  .sub { color: var(--text-faint); margin: 0 0 32px; }
+
+  /* hero card */
+  .card {
+    background: var(--layer-01);
+    border: 1px solid var(--border-muted);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .hero { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+  .hero img.avatar {
+    width: 96px; height: 96px; border-radius: 12px;
+    border: 1px solid var(--border); object-fit: cover;
+  }
+  .hero h2 { margin: 0 0 4px; font-size: 20px; font-weight: 600; }
+  .hero p { margin: 0 0 12px; color: var(--text-muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-size: 12px; padding: 3px 10px; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--text-muted);
+    background: var(--bg);
+  }
+
+  .label { font-size: 12px; color: var(--text-faint); margin: 14px 0 6px; }
+  .label:first-child { margin-top: 0; }
+  .codeline {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: var(--code-bg);
+    border: 1px solid var(--border-muted);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .codeline code { font-size: 13px; }
+  .copy {
+    border: 1px solid var(--border); background: var(--bg); color: var(--text-muted);
+    font-size: 12px; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+    font-family: inherit;
+  }
+  .copy:hover { color: var(--text); border-color: var(--border-strong); }
+
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat {
+    background: var(--layer-01); border: 1px solid var(--border-muted);
+    border-radius: 10px; padding: 16px;
+  }
+  .stat .k { font-size: 12px; color: var(--text-faint); }
+  .stat .v { font-size: 22px; font-weight: 600; margin-top: 4px; }
+
+  h3 { font-size: 15px; font-weight: 600; margin: 32px 0 8px; }
+  .muted { color: var(--text-muted); }
+
+  .links { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); color: #fff; text-decoration: none; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--bg); }
+  .btn-ghost:hover { border-color: var(--border-strong); text-decoration: none; }
+
+  footer {
+    max-width: 880px; margin: 0 auto; padding: 16px;
+    border-top: 1px solid var(--border-muted);
+    display: flex; gap: 16px; font-size: 12px; color: var(--text-faint);
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">M</div>
+    <div class="divider"></div>
+    <span class="badge"><span class="dot"></span> <b>Molkyv</b> · <span data-i18n="badge">bio</span></span>
+    <div class="spacer"></div>
+    <div class="toggles">
+      <button class="tgl" id="themeToggle">🌙</button>
+      <button class="tgl" id="langToggle">EN</button>
+    </div>
+    <div class="user">
+      <span>Molkyv</span>
+      <img src="avatar.png" alt="avatar" />
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <a href="#" class="active" data-i18n="tab_overview">Overview</a>
+    <a href="https://github.com/Molkyv-cat?tab=repositories" target="_blank" data-i18n="tab_projects">Projects</a>
+    <a href="https://github.com/Molkyv-cat" target="_blank">GitHub</a>
+  </nav>
+
+  <main>
+    <h1 data-i18n="title">Overview</h1>
+    <p class="sub" data-i18n="subtitle">Школьник, который хочет научиться писать код.</p>
+
+    <div class="card hero">
+      <img class="avatar" src="avatar.png" alt="Molkyv" />
+      <div>
+        <h2>Molkyv</h2>
+        <p data-i18n="hero_tag">Кот-программист 3&gt;</p>
+        <div class="chips">
+          <span class="chip">Python · Learning</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="label" data-i18n="contact">Как связаться</p>
+      <div class="codeline">
+        <code>git clone https://github.com/Molkyv-cat</code>
+        <button class="copy" data-copy="https://github.com/Molkyv-cat">Copy</button>
+      </div>
+      <p class="label" data-i18n="status">Текущий статус</p>
+      <div class="codeline">
+        <code>$ whoami → molkyv · coding…</code>
+        <button class="copy" data-copy="whoami">Copy</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Projects</div><div class="v">0 :(</div></div>
+      <div class="stat"><div class="k">Tea</div><div class="v">67</div></div>
+      <div class="stat"><div class="k">Bugs fixed</div><div class="v">False</div></div>
+    </div>
+
+    <h3 data-i18n="about">О себе</h3>
+    <p class="muted" data-i18n="about_text">Привет! Учусь писать код. Цель — выучить Python до уровня джуна и устроиться разработчиком. Пишу понемногу каждый день, разбираюсь в основах и делаю первые проекты.</p>
+
+    <div class="links">
+      <a class="btn btn-primary" href="https://github.com/Molkyv-cat" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/Molkyv-cat?tab=repositories" target="_blank" data-i18n="repos">Репозитории</a>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Molkyv</span>
+    <span style="margin-left:auto">Created By AI</span>
+  </footer>
+
+<script>
+  var I18N = {
+    ru: {
+      badge: "bio",
+      tab_overview: "Overview",
+      tab_projects: "Проекты",
+      title: "Overview",
+      subtitle: "Школьник, который хочет научиться писать код.",
+      hero_tag: "Кот-программист 3>",
+      contact: "Как связаться",
+      status: "Текущий статус",
+      about: "О себе",
+      about_text: "Привет! Учусь писать код. Цель — выучить Python до уровня джуна и устроиться разработчиком. Пишу понемногу каждый день, разбираюсь в основах и делаю первые проекты.",
+      repos: "Репозитории"
+    },
+    en: {
+      badge: "bio",
+      tab_overview: "Overview",
+      tab_projects: "Projects",
+      title: "Overview",
+      subtitle: "A schoolkid who wants to learn how to code.",
+      hero_tag: "Cat-programmer 3>",
+      contact: "Get in touch",
+      status: "Current status",
+      about: "About me",
+      about_text: "Hi! I'm learning to code. My goal is to learn Python up to a junior level and become a developer. I write a little bit every day, learn the basics and build my first projects.",
+      repos: "Repositories"
+    }
+  };
+  var lang = "ru";
+  var themeBtn = document.getElementById("themeToggle");
+  var langBtn = document.getElementById("langToggle");
+
+  function applyTheme(t) {
+    document.documentElement.dataset.theme = t;
+    themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
+    localStorage.setItem("theme", t);
+  }
+  function applyLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var v = I18N[l][el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;
+    });
+    langBtn.textContent = l === "ru" ? "EN" : "RU";
+    localStorage.setItem("lang", l);
+  }
+
+  applyTheme(localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+  applyLang(localStorage.getItem("lang") || "ru");
+
+  themeBtn.addEventListener("click", function () {
+    applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+  });
+  langBtn.addEventListener("click", function () {
+    applyLang(lang === "ru" ? "en" : "ru");
+  });
+
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(b.dataset.copy).then(function () {
+        var t = b.textContent; b.textContent = "Copied ✓";
+        setTimeout(function () { b.textContent = t; }, 1200);
+      });
+    });
+  });
+</script>
+</body>
+</html>
